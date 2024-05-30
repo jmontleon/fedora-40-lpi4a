@@ -49,9 +49,10 @@ It is easiest to modify the image using a VM and then copying it to an SD Card t
           linux /vmlinuz-6.8.11-300.1.riscv64.fc40.riscv64.unzboot
           initrd /initramfs-6.8.11-300.1.riscv64.fc40.riscv64.img
           fdt /dtb/thead/th1520-lichee-pi-4a.dtb
-          append console=ttyS0,115200 root=PARTUUID=c44914cf-1285-4aec-b5df-0224434d3e12 rootfstype=ext4 rootwait rw
+          append console=ttyS0,115200 root=UUID=ae525e47-51d5-4c98-8442-351d530612c3 ro rootflags=subvol=root rootwait
   EOF
   ```
+  - NOTE: be sure to use the correct UUID for the image you downloaded.
 - Shutdown the VM
 - dd the image to an SD Card
 - Eject it safely, insert it in your Lichee Pi 4a, and boot.
