@@ -18,7 +18,7 @@ It is easiest to modify the image using a VM and then copying it to an SD Card t
   - `wget https://github.com/riscv-software-src/opensbi/releases/download/v1.4/opensbi-1.4-rv-bin.tar.xz`
   - `tar Jxvf opensbi-1.4-rv-bin.tar.xz`
   - `cp opensbi-1.4-rv-bin/share/opensbi/lp64/generic/firmware/fw_dynamic.bin /boot`
--. unzboot 
+- unzboot 
   - `git clone https://github.com/eballetbo/unzboot`
   - `cd unzboot`
   - `sed -i '293,298d' unzboot.c`
