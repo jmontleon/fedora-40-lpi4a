@@ -50,7 +50,7 @@ It is easiest to modify the image using a VM and then copying it to an SD Card t
           append console=ttyS0,115200 root=UUID=ae525e47-51d5-4c98-8442-351d530612c3 ro rootflags=subvol=root rootwait
   EOF
   ```
-  - NOTE: be sure to use the correct UUID for the image you downloaded.
+  - NOTE: be sure to use the correct UUID for the image you downloaded. You can use `blkid` and/or look one of the entries in `/boot/loader/entries` to get this. 
 - Shutdown the VM
 - dd the image to an SD Card
 - Eject it safely, insert it in your Lichee Pi 4a, and boot.
