@@ -2,7 +2,7 @@
 
 Fedora 40 can more or less work on the Lichee Pi 4A, but there are a few pieces missing.  
   
-The big component missing is working EFI support in either the vendor or upstream u-boot. Because of this we cannot use grub2-efi. Fedora kernels are also built using `CONFIG_EFI_ZBOOT` and extlinux does not support zboot so we need to decompress them in order to use them with extlinux. Finally, some kernel patches that have not yet made it upstream yet are required to make the lpi4a more functional.  
+The big component missing is working EFI support in either the vendor or upstream u-boot. Because of this we cannot use grub2-efi. Fedora kernels are also built using `CONFIG_EFI_ZBOOT` and extlinux does not support zboot so we need to decompress them in order to use them with extlinux. Finally, some kernel patches that have not yet made it upstream are required to make the lpi4a more functional.  
   
 It is easiest to modify the image using a VM and then copying it to an SD Card to boot the Lichee Pi 4A.
 
