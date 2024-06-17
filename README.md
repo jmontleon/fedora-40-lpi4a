@@ -54,6 +54,38 @@ It is easiest to modify the image using a VM and then copying it to an SD Card t
 - Shutdown the VM
 - dd the image to an SD Card
 - Eject it safely, insert it in your Lichee Pi 4a, and boot.
+- To have the extlinux menu update automatically when you install a new kernel you can create a script:  
+`/etc/kernel/install.d/99-update-extlinux.install`
+```
+#!/bin/bash
+rm -f /boot/*.unzboot
+
+for i in /boot/vmlinuz*riscv64; do
+  /usr/local/bin/unzboot $i $i.unzboot
+done
+
+cat << EOF > /boot/extlinux/extlinux.conf
+menu title Fedora boot menu
+prompt 0
+timeout 50
+default F40S1
+EOF
+
+index=0
+for i in $(ls -1vr /boot/vmlinuz*unzboot); do
+  index=$((index+1))
+  version=$(echo $i | sed 's,/boot/vmlinuz-,,g' | sed 's,\.unzboot,,g')
+  cat << EOF >> /boot/extlinux/extlinux.conf
+
+label F40S${index}
+        menu label Fedora 40 ${version}
+        linux /vmlinuz-${version}.unzboot
+        initrd /initramfs-${version}.img
+        fdt /dtb/thead/th1520-lichee-pi-4a.dtb
+        append console=ttyS0,115200 root=PARTUUID=c44914cf-1285-4aec-b5df-0224434d3e12 rootfstype=ext4 rootwait rw
+EOF
+done
+```
 
 ## U-Boot
 The u-boot env I used to boot this:
