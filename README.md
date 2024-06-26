@@ -86,6 +86,10 @@ label F40S${index}
 EOF
 done
 ```
+- `chmod +x /etc/kernel/install.d/99-update-extlinux.install`
+
+## kernel updates
+For the time being you can copy https://people.redhat.com/jmontleo/vf2-lpi4a.repo to `/etc/yum.repos.d` to receive some testing kernel updates.
 
 ## U-Boot
 The u-boot env I used to boot this:
